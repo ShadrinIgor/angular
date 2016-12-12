@@ -1,0 +1,13 @@
+.image {
+    width: 150px;
+    overflow: hidden;
+}
+
+.image img {
+    max-width: 150px;
+}
+
+.catalogList {
+    float: left;
+    margin: 0px auto;
+}

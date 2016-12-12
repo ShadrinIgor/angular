@@ -1,1 +1,26 @@
-<h1>Ура</h1>
+<div ng-controller="IndexController">
+    <h1>Список товаров</h1>
+    <div class="container">
+        <div class="catalogList col-xs-10 panel panel-info">
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th>#ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                    </tr>
+                    <tr ng-repeat="item in centerData.catalog">
+                        <td>{{item.id}}</td>
+                        <td><div class="image"><img ng-if="item.image" src="data/{{item.image}}" /></div></td>
+                        <td>{{item.name}}</td>
+                        <td>{{item.price}}</td>
+                        <td>{{item.category}}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
