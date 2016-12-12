@@ -5,12 +5,13 @@
   "author": "",
   "copyright": "",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel js -d public"
   },
   "dependencies": {
     "angular": "^1.6.0",
     "angular-route": "^1.6.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
