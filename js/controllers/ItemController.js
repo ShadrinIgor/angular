@@ -3,11 +3,12 @@ mainApp.controller('ItemController',
         $scope.item={};
         $scope.gallery=[];
         $scope.errors = [];
+        $scope.message = '';
 
-        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
+/*        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('autocomplete'), {
             language: 'ru',
             componentRestrictions: {country: 'ru'}
-        });
+        });*/
 
         for( var i=0;i<$rootScope.centerData.catalog.length;i++ ){
             if( $rootScope.centerData.catalog[i].id == $routeParams.id ) {
@@ -38,12 +39,14 @@ mainApp.controller('ItemController',
                 if( !form.name ) $scope.errors.push('Name field is a required');
                 if( form.vk ) {
                     var reg = /^https:\/\/vk.com\/(.+)?$/;
-                    if(reg.test(form.vk) == false) {
-                        $scope.errors.push('Incorrect VK link');
-                    }
+                    if(reg.test(form.vk) == false) $scope.errors.push('Incorrect VK link');
                 }
             }
-            else $scope.errors.push('E-mail and NAME fields are a required');
+                else $scope.errors.push('E-mail and NAME fields are a required');
+
+            if( $scope.errors.length == 0 ){
+                $scope.message = "Your order was sent";
+            }
         }
     }
 )

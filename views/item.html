@@ -2,7 +2,7 @@
 <br/>
 <div ng-controller="ItemController">
     <ol class="breadcrumb">
-        <li><a href="#/index">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li class="active">{{item.name}}</li>
     </ol>
     <div class="floatRight">
@@ -16,12 +16,13 @@
                     </div>
                     <form class="simple-form">
                         <div class="modal-body">
+                            <div ng-if="message" class="alert alert-success">{{message}}</div>
                             <div ng-if="errors.length > 0" class="alert alert-danger">
                                 <ul>
                                     <li ng-repeat="error in errors">{{error}}</li>
                                 </ul>
                             </div>
-                            <table class="table table-hover">
+                            <table ng-show="!message" class="table table-hover">
                                 <tr>
                                     <th>Email *:</th>
                                     <td><div class="input-group"><input placeholder="Email" type="text" class="form-control" ng-model="order.email" /></div></td>
@@ -44,7 +45,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" ng-click="saveForm( order )">Save changes</button>
+                            <button type="submit" class="btn btn-primary" ng-click="saveForm( order )">Save changes</button>
                         </div>
                     </form>
                 </div>
