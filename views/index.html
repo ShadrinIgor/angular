@@ -1,26 +1,57 @@
-<div ng-controller="IndexController">
+<div ng-controller="IndexController" class="row">
     <h1>Список товаров</h1>
-    <div class="container">
-        <div class="catalogList col-xs-10 panel panel-info">
-            <div class="panel-body">
-                <table class="table">
-                    <tr>
-                        <th>#ID</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Category</th>
-                    </tr>
-                    <tr ng-repeat="item in centerData.catalog">
-                        <td>{{item.id}}</td>
-                        <td><div class="image"><img ng-if="item.image" src="data/{{item.image}}" /></div></td>
-                        <td>{{item.name}}</td>
-                        <td>{{item.price}}</td>
-                        <td>{{item.category}}</td>
-                    </tr>
-
-                </table>
+    <div class="catalogList col-xs-12 panel panel-info">
+        <div class="panel-body">
+            <div class="panel panel-success">
+                <div class="panel-body row" >
+                    <div class="col-xs-3">
+                        <div class="input-group">
+                            <label>Название:</label><br/>
+                            <input class="form-control col-xs-12" type="text" ng-model="filter.name" placeholder="название" />
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                            <label>Цена от:</label><br/>
+                            <input class="form-control col-xs-10" type="text" ng-model="filter.price_1" placeholder="от цены" />
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group">
+                            <label>Цена до:</label><br/>
+                            <input class="form-control col-xs-12" type="text" ng-model="filter.price_2" placeholder="до цены" />
+                        </div>
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="input-group">
+                            <label>Категория</label><br/>
+                            <select class="form-control col-xs-12" name="category" ng-model="filter.category">
+                                <option value=""> --- --- --- </option>
+                                <optgroup ng-repeat="optiongroup in centerData.category" label="{{optiongroup.name}}">
+                                    <option ng-repeat="option in optiongroup.sub" value="{{option.id}}">{{option.name}}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <table class="table">
+                <tr>
+                    <th>#ID</th>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+                <tr ng-repeat="item in centerData.catalog | filter : filterItems | filter: { name:filter.name }">
+                    <td>{{item.id}}</td>
+                    <td><div ng-if="item.image" class="image"><img  src="data/{{item.image}}" /></div></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.category}}</td>
+                </tr>
+
+            </table>
         </div>
     </div>
 </div>
