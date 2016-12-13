@@ -1,5 +1,5 @@
 var mainApp = angular.module('mainApp', ["ngRoute"])
-    .config(function($routeProvider){
+    .config(($routeProvider)=>{
         $routeProvider.when('/index',
             {
                 templateUrl:'views/index.html',
@@ -12,13 +12,13 @@ var mainApp = angular.module('mainApp', ["ngRoute"])
                 });
         $routeProvider.otherwise({redirectTo: '/index'});
     })
-    .run( function($http, $rootScope){
+    .run( ($http, $rootScope)=>{
         $http({method: 'GET', url: 'data.json'})
             .then(
-                function (result) {
+                (result)=>{
                     $rootScope.centerData = result.data;
                 },
-                function (data, status, headers, config) {
+                (data, status, headers, config)=>{
                     alert( "Have a http error" );
                 }
             );

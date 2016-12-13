@@ -3,7 +3,7 @@ mainApp.controller('IndexController',
 
         $scope.filter = {price_1: 0, price_2: 0, category: 0, name: ''};
 
-        $scope.filterItems = function( item ) {
+        $scope.filterItems = ( item )=>{
             var cout = true;
             if( cout && $scope.filter.price_1 > 0 && item.price < $scope.filter.price_1 )cout = false;
             if( cout && $scope.filter.price_2 > 0 && item.price > $scope.filter.price_2 )cout = false;
@@ -11,11 +11,11 @@ mainApp.controller('IndexController',
             return cout;
         }
 
-        $scope.getItemDescription = function( item ) {
+        $scope.getItemDescription = ( item )=>{
             $location.path( '/item/'+item.id )
         }
 
-        $scope.category = function ( id ) {
+        $scope.category = ( id )=>{
             return itemService.getCategory(id);
         }
     }

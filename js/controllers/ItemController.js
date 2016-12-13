@@ -22,11 +22,11 @@ mainApp.controller('ItemController',
             }
         }
 
-        $scope.category = function ( id ) {
+        $scope.category = ( id )=>{
             return itemService.getCategory(id);
         };
 
-        $scope.saveForm = function ( form ){
+        $scope.saveForm = ( form )=>{
             $scope.errors = [];
             if( form ) {
                 if(!form.email ) $scope.errors.push('E-mail field is a required');
