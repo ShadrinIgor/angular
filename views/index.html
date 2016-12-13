@@ -43,12 +43,12 @@
                     <th>Price</th>
                     <th>Category</th>
                 </tr>
-                <tr ng-repeat="item in centerData.catalog | filter : filterItems | filter: { name:filter.name }">
+                <tr ng-repeat="item in centerData.catalog | filter : filterItems | filter: { name:filter.name }" ng-click="getItemDescription( item )">
                     <td>{{item.id}}</td>
-                    <td><div ng-if="item.image" class="image"><img  src="data/{{item.image}}" /></div></td>
+                    <td><div ng-if="item.image" class="image"><img src="data/{{item.image}}" /></div></td>
                     <td>{{item.name}}</td>
                     <td>{{item.price}}</td>
-                    <td>{{item.category}}</td>
+                    <td>{{category(item.category).name}}</td>
                 </tr>
 
             </table>

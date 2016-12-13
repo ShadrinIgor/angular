@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "angular": "^1.6.0",
+    "angular-google-places-autocomplete": "^0.2.9",
     "angular-route": "^1.6.0",
     "bootstrap": "^3.3.7",
     "jquery": "^3.1.1"

@@ -6,3 +6,11 @@
 .image img {
     max-width: 150px;
 }
+
+.floatRight {
+    float: right;
+}
+
+.ng-invalid, .ng-invalid-email {
+    border:1px solid #ff0000;
+}

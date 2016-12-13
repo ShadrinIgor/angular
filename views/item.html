@@ -1,0 +1,85 @@
+
+<br/>
+<div ng-controller="ItemController">
+    <ol class="breadcrumb">
+        <li><a href="#/index">Home</a></li>
+        <li class="active">{{item.name}}</li>
+    </ol>
+    <div class="floatRight">
+        <input class="btn btn-success" value="Заказать" data-toggle="modal" data-target="#myModal" />
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <form class="simple-form">
+                        <div class="modal-body">
+                            <div ng-if="errors.length > 0" class="alert alert-danger">
+                                <ul>
+                                    <li ng-repeat="error in errors">{{error}}</li>
+                                </ul>
+                            </div>
+                            <table class="table table-hover">
+                                <tr>
+                                    <th>Email *:</th>
+                                    <td><div class="input-group"><input placeholder="Email" type="text" class="form-control" ng-model="order.email" /></div></td>
+                                </tr>
+                                <tr>
+                                    <th>Имя *:</th>
+                                    <td><div class="input-group"><input type="text" placeholder="Имя" class="form-control" ng-model="order.name" /></div></td>
+                                </tr>
+                                <tr>
+                                    <th>Адресс:</th>
+                                    <td><div class="input-group">
+                                        <input type="text" placeholder="Адрес" class="form-control" ng-model="order.address" />
+                                    </div></td>
+                                </tr>
+                                <tr>
+                                    <th>VK:</th>
+                                    <td><div class="input-group"><input type="text" placeholder="VK" class="form-control" ng-model="order.vk" /></div></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="saveForm( order )">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1>{{item.name}}</h1>
+    <div class="panel panel-success">
+        <div class="panel-body row" >
+            <div ng-if="item.image" class="col-xs-3 ItemDescImage"><img src="/data/{{item.image}}" class="col-xs-12" /></div>
+            <div class="col-xs-9">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        {{item.description}}
+                    </div>
+                </div>
+                <table class="table">
+                    <tr ng-if="item.price">
+                        <th>Цена:</th>
+                        <td>{{item.price}}</td>
+                    </tr>
+                    <tr>
+                        <th>Категория:</th>
+                        <td>{{category(item.category).name}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container row" ng-if="gallery.length > 0">
+        <h2>Галлеря:</h2>
+        <div class="panel panel-info">
+            <div class="panel-heading clearfix">
+                <div ng-repeat="image in gallery" class="col-xs-3"><img src="/data/{{image.image}}" class="col-xs-12" /></div>
+            </div>
+        </div>
+    </div>
+</div>
